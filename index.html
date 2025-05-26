@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Loja Virtual</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">Eduardo</a>
+        
+        <div class="nav-items">
+            <a href="#" class="category-link" data-category="camisas">Camisas</a>
+            <a href="#" class="category-link" data-category="tenis">Tênis</a>
+            <a href="#" class="category-link" data-category="acessorios">Acessórios</a>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar produtos...">
+            <button>Buscar</button>
+        </div>
+        
+        <div id="auth-section">
+            <button class="auth-button" id="login-button">Login</button>
+        </div>
+    </nav>
+
+    <div class="main-content" id="home-page">
+        <h1>Bem-vindo à nossa loja!</h1>
+        <p>Explore nossas categorias para encontrar os melhores produtos.</p>
+    </div>
+
+    <!-- Páginas de categoria -->
+    <div class="category-page" id="camisas-page">
+        <h1>Camisas</h1>
+        <div class="category-items">
+            <div class="item-card">
+                <img src="imagens/camisa premium.jpg" alt="Camiseta">
+                <h3>Camiseta Premium</h3>
+                <p>Camiseta de algodão 100% puro, alta qualidade</p>
+                <div class="price">R$ 89,90</div>
+            </div>
+            <div class="item-card">
+                <img src="imagens/camisa esportiva" alt="Camiseta">
+                <h3>Camiseta Esportiva</h3>
+                <p>Tecido dry-fit para melhor desempenho</p>
+                <div class="price">R$ 119,90</div>
+            </div>
+            <div class="item-card">
+                <img src="imagens/camisa basica" alt="Camiseta">
+                <h3>Camiseta Básica</h3>
+                <p>Confortável e versátil para o dia a dia</p>
+                <div class="price">R$ 49,90</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-page" id="tenis-page">
+        <h1>Tênis</h1>
+        <div class="category-items">
+            <div class="item-card">
+                <img src="imagens/tenis esportivo" alt="Tênis">
+                <h3>Tênis Esportivo</h3>
+                <p>Amortecimento premium para corrida</p>
+                <div class="price">R$ 299,90</div>
+            </div>
+            <div class="item-card">
+                <img src="imagens/tenis casual" alt="Tênis">
+                <h3>Tênis Casual</h3>
+                <p>Estilo e conforto para o dia a dia</p>
+                <div class="price">R$ 199,90</div>
+            </div>
+            <div class="item-card">
+                <img src="imagens/tenis skate.jpg" alt="Tênis">
+                <h3>Tênis Skate</h3>
+                <p>Resistente e com ótima aderência</p>
+                <div class="price">R$ 249,90</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-page" id="acessorios-page">
+        <h1>Acessórios</h1>
+        <div class="category-items">
+            <div class="item-card">
+                <img src="imagens/relogio esportivo.jpg" alt="Acessório">
+                <h3>Relógio Esportivo</h3>
+                <p>Monitor de batimentos e GPS integrado</p>
+                <div class="price">R$ 399,90</div>
+            </div>
+            <div class="item-card">
+                <img src="imagens/bone premium.jpg" alt="Acessório">
+                <h3>Boné Premium</h3>
+                <p>Proteção UV e ajuste perfeito</p>
+                <div class="price">R$ 89,90</div>
+            </div>
+            <div class="item-card">
+                <img src="imagens/moletom" alt="Acessório">
+                <h3>Moletom</h3>
+                <p>Confortável e estiloso para dias frios</p>
+                <div class="price">R$ 159,90</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Senha">
+            <button id="submit-login">Entrar</button>
+            <p class="close-button" id="close-modal">Fechar</p>
+        </div>
+    </div>
+
+    <!-- Adicione os scripts do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
