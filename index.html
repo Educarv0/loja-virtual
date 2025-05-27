@@ -48,9 +48,9 @@
         <div class="all-products" id="products-container">
             <!-- Camisas -->
             <div class="product-card" data-category="camisas">
-                <img src="imagens/camisa premium.jpg" alt="Camiseta Premium" class="product-image">
+                <img src="imagens/camisa premium.jpg" alt="Camiseta boss" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Camiseta Premium</h3>
+                    <h3 class="product-title">Camiseta Boss</h3>
                     <p class="product-description">Algodão 100% puro, alta qualidade</p>
                     <div class="product-price">R$ 89,90</div>
                 </div>
@@ -113,9 +113,9 @@
             </div>
             
             <div class="product-card" data-category="acessorios">
-                <img src="imagens/bone premium.jpg" alt="Boné Premium" class="product-image">
+                <img src="imagens/bone premium.jpg" alt="Boné New Era" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Boné Premium</h3>
+                    <h3 class="product-title">Boné New Era</h3>
                     <p class="product-description">Proteção UV e ajuste perfeito</p>
                     <div class="product-price">R$ 89,90</div>
                 </div>
@@ -124,7 +124,7 @@
             <div class="product-card" data-category="acessorios">
                 <img src="imagens/moletom" alt="Moletom" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Moletom</h3>
+                    <h3 class="product-title">Moletom Streetwear</h3>
                     <p class="product-description">Confortável e estiloso para dias frios</p>
                     <div class="product-price">R$ 159,90</div>
                 </div>
@@ -133,8 +133,29 @@
     </div>
 
     <!-- Adicione os scripts do Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/11.8.1/firebase-app-compact.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics-compact.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app-compat.js"></script&gt
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-auth-compat.js"></script&gt
+    <script>
+        const firebaseConfig = {
+        apiKey: "AIzaSyAV89KI7W-3PnT3l73u2XSEYULY6s1D5Iw",
+        authDomain: "loja-virtual-502f1.firebaseapp.com",
+        projectId: "loja-virtual-502f1",
+        storageBucket: "loja-virtual-502f1.firebasestorage.app",
+        messagingSenderId: "462123732485",
+        appId: "1:462123732485:web:e46f3e7aa69dc68c0b966c",
+        measurementId: "G-H2GP6VX4T6"
+        };
+         firebase.initializeApp(firebaseConfig);
+
+        firebase.auth()
+        .signInWithEmailAndPassword("test@gmail.com", "test@123")
+        .then(response => {
+            console.log('success', response)
+        }).catch(error => {
+            console.log('error', error)
+        });
+
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
