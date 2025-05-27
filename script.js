@@ -117,3 +117,59 @@ function updateUI(user) {
         auth.signOut();
     });
 }
+// Filtro de categorias
+        document.querySelectorAll('.category-filter').forEach(filter => {
+            filter.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Ativa/desativa o botão de filtro
+                document.querySelectorAll('.category-filter').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Mostra o título da categoria selecionada
+                document.querySelectorAll('.category-title').forEach(title => {
+                    title.classList.remove('active');
+                });
+                document.getElementById(`${category}-title`).classList.add('active');
+                
+                // Filtra os produtos
+                const allProducts = document.querySelectorAll('.product-card');
+                if (category === 'all') {
+                    allProducts.forEach(product => {
+                        product.style.display = 'block';
+                    });
+                    document.querySelectorAll('.category-title').forEach(title => {
+                        title.classList.remove('active');
+                    });
+                } else {
+                    allProducts.forEach(product => {
+                        if (product.getAttribute('data-category') === category) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Botão "Todos os produtos" (logo)
+        document.getElementById('all-products').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove filtros
+            document.querySelectorAll('.category-filter').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.category-title').forEach(title => {
+                title.classList.remove('active');
+            });
+            
+            // Mostra todos os produtos
+            document.querySelectorAll('.product-card').forEach(product => {
+                product.style.display = 'block';
+            });
+        });
