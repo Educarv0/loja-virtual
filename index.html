@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,17 +9,17 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="#" class="logo">Eduardo</a>
+        <a href="#" class="logo" id="all-products">Loja Virtual</a>
         
         <div class="nav-items">
-            <a href="#" class="category-link" data-category="camisas">Camisas</a>
-            <a href="#" class="category-link" data-category="tenis">Tênis</a>
-            <a href="#" class="category-link" data-category="acessorios">Acessórios</a>
+            <a class="category-filter" data-category="camisas">Camisas</a>
+            <a class="category-filter" data-category="tenis">Tênis</a>
+            <a class="category-filter" data-category="acessorios">Acessórios</a>
         </div>
         
         <div class="search-container">
-            <input type="text" placeholder="Pesquisar produtos...">
-            <button>Buscar</button>
+            <input type="text" id="search-input" placeholder="Pesquisar produtos...">
+            <button id="search-button">Buscar</button>
         </div>
         
         <div id="auth-section">
@@ -26,84 +27,7 @@
         </div>
     </nav>
 
-    <div class="main-content" id="home-page">
-        <h1>Bem-vindo à nossa loja!</h1>
-        <p>Explore nossas categorias para encontrar os melhores produtos.</p>
-    </div>
-
-    <!-- Páginas de categoria -->
-    <div class="category-page" id="camisas-page">
-        <h1>Camisas</h1>
-        <div class="category-items">
-            <div class="item-card">
-                <img src="imagens/camisa premium.jpg" alt="Camiseta">
-                <h3>Camiseta Premium</h3>
-                <p>Camiseta de algodão 100% puro, alta qualidade</p>
-                <div class="price">R$ 89,90</div>
-            </div>
-            <div class="item-card">
-                <img src="imagens/camisa esportiva" alt="Camiseta">
-                <h3>Camiseta Esportiva</h3>
-                <p>Tecido dry-fit para melhor desempenho</p>
-                <div class="price">R$ 119,90</div>
-            </div>
-            <div class="item-card">
-                <img src="imagens/camisa basica" alt="Camiseta">
-                <h3>Camiseta Básica</h3>
-                <p>Confortável e versátil para o dia a dia</p>
-                <div class="price">R$ 49,90</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-page" id="tenis-page">
-        <h1>Tênis</h1>
-        <div class="category-items">
-            <div class="item-card">
-                <img src="imagens/tenis esportivo" alt="Tênis">
-                <h3>Tênis Esportivo</h3>
-                <p>Amortecimento premium para corrida</p>
-                <div class="price">R$ 299,90</div>
-            </div>
-            <div class="item-card">
-                <img src="imagens/tenis casual" alt="Tênis">
-                <h3>Tênis Casual</h3>
-                <p>Estilo e conforto para o dia a dia</p>
-                <div class="price">R$ 199,90</div>
-            </div>
-            <div class="item-card">
-                <img src="imagens/tenis skate.jpg" alt="Tênis">
-                <h3>Tênis Skate</h3>
-                <p>Resistente e com ótima aderência</p>
-                <div class="price">R$ 249,90</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-page" id="acessorios-page">
-        <h1>Acessórios</h1>
-        <div class="category-items">
-            <div class="item-card">
-                <img src="imagens/relogio esportivo.jpg" alt="Acessório">
-                <h3>Relógio Esportivo</h3>
-                <p>Monitor de batimentos e GPS integrado</p>
-                <div class="price">R$ 399,90</div>
-            </div>
-            <div class="item-card">
-                <img src="imagens/bone premium.jpg" alt="Acessório">
-                <h3>Boné Premium</h3>
-                <p>Proteção UV e ajuste perfeito</p>
-                <div class="price">R$ 89,90</div>
-            </div>
-            <div class="item-card">
-                <img src="imagens/moletom" alt="Acessório">
-                <h3>Moletom</h3>
-                <p>Confortável e estiloso para dias frios</p>
-                <div class="price">R$ 159,90</div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Modal de Login -->
     <div class="modal" id="login-modal">
         <div class="modal-content">
             <h2>Login</h2>
@@ -114,9 +38,103 @@
         </div>
     </div>
 
+    <div class="main-content">
+        <!-- Título da categoria (mostrado apenas quando filtrado) -->
+        <h2 class="category-title" id="camisas-title">Camisas</h2>
+        <h2 class="category-title" id="tenis-title">Tênis</h2>
+        <h2 class="category-title" id="acessorios-title">Acessórios</h2>
+        
+        <!-- Todos os produtos em um único container -->
+        <div class="all-products" id="products-container">
+            <!-- Camisas -->
+            <div class="product-card" data-category="camisas">
+                <img src="imagens/camisa premium.jpg" alt="Camiseta Premium" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Camiseta Premium</h3>
+                    <p class="product-description">Algodão 100% puro, alta qualidade</p>
+                    <div class="product-price">R$ 89,90</div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="camisas">
+                <img src="imagens/camisa esportiva" alt="Camiseta Esportiva" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Camiseta Esportiva</h3>
+                    <p class="product-description">Tecido dry-fit para melhor desempenho</p>
+                    <div class="product-price">R$ 119,90</div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="camisas">
+                <img src="imagens/camisa basica" alt="Camiseta Básica" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Camiseta Básica</h3>
+                    <p class="product-description">Confortável e versátil para o dia a dia</p>
+                    <div class="product-price">R$ 49,90</div>
+                </div>
+            </div>
+
+            <!-- Tênis -->
+            <div class="product-card" data-category="tenis">
+                <img src="imagens/tenis esportivo" alt="Tênis Esportivo" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Tênis Esportivo</h3>
+                    <p class="product-description">Amortecimento premium para corrida</p>
+                    <div class="product-price">R$ 299,90</div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="tenis">
+                <img src="imagens/tenis casual" alt="Tênis Casual" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Tênis Casual</h3>
+                    <p class="product-description">Estilo e conforto para o dia a dia</p>
+                    <div class="product-price">R$ 199,90</div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="tenis">
+                <img src="imagens/tenis skate.jpg" alt="Tênis Skate" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Tênis Skate</h3>
+                    <p class="product-description">Resistente e com ótima aderência</p>
+                    <div class="product-price">R$ 249,90</div>
+                </div>
+            </div>
+
+            <!-- Acessórios -->
+            <div class="product-card" data-category="acessorios">
+                <img src="imagens/relogio esportivo.jpg" alt="Relógio Esportivo" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Relógio Esportivo</h3>
+                    <p class="product-description">Monitor de batimentos e GPS integrado</p>
+                    <div class="product-price">R$ 399,90</div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="acessorios">
+                <img src="imagens/bone premium.jpg" alt="Boné Premium" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Boné Premium</h3>
+                    <p class="product-description">Proteção UV e ajuste perfeito</p>
+                    <div class="product-price">R$ 89,90</div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-category="acessorios">
+                <img src="imagens/moletom" alt="Moletom" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Moletom</h3>
+                    <p class="product-description">Confortável e estiloso para dias frios</p>
+                    <div class="product-price">R$ 159,90</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Adicione os scripts do Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.8.1/firebase-app-compact.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics-compact.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
