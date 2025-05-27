@@ -72,7 +72,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 
-        // Elementos da DOM
+             // Elementos da DOM
         const loginButton = document.getElementById('login-button');
         const authSection = document.getElementById('auth-section');
         const loginModal = document.getElementById('login-modal');
@@ -80,6 +80,7 @@ const auth = firebase.auth();
         const submitLogin = document.getElementById('submit-login');
         const loginEmail = document.getElementById('login-email');
         const loginPassword = document.getElementById('login-password');
+        const loginError = document.getElementById('login-error');
         const searchInput = document.getElementById('search-input');
         const searchButton = document.getElementById('search-button');
         const allProductsBtn = document.getElementById('all-products');
@@ -105,7 +106,13 @@ const auth = firebase.auth();
 
         // Função para buscar produtos
         function searchProducts() {
-            const searchTerm = searchInput.value.toLowerCase();
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                filterByCategory('all');
+                categoryFilters.forEach(btn => btn.classList.remove('active'));
+                return;
+            }
             
             productCards.forEach(card => {
                 const title = card.querySelector('.product-title').textContent.toLowerCase();
@@ -127,6 +134,7 @@ const auth = firebase.auth();
                 categoryFilters.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 filterByCategory(this.dataset.category);
+                searchInput.value = '';
             });
         });
 
@@ -146,6 +154,7 @@ const auth = firebase.auth();
         // Login Modal
         loginButton.addEventListener('click', () => {
             loginModal.style.display = 'flex';
+            loginError.style.display = 'none';
         });
 
         closeModal.addEventListener('click', () => {
@@ -160,18 +169,42 @@ const auth = firebase.auth();
 
         // Firebase Auth
         submitLogin.addEventListener('click', () => {
-            const email = loginEmail.value;
-            const password = loginPassword.value;
+            const email = loginEmail.value.trim();
+            const password = loginPassword.value.trim();
+            
+            if (!email || !password) {
+                loginError.textContent = "Por favor, preencha todos os campos";
+                loginError.style.display = 'block';
+                return;
+            }
             
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     updateUI(userCredential.user);
                     loginModal.style.display = 'none';
+                    loginEmail.value = '';
+                    loginPassword.value = '';
                 })
                 .catch((error) => {
-                    alert("Erro ao fazer login: " + error.message);
+                    loginError.textContent = getLoginErrorMessage(error.code);
+                    loginError.style.display = 'block';
                 });
         });
+
+        function getLoginErrorMessage(errorCode) {
+            switch(errorCode) {
+                case 'auth/invalid-email':
+                    return "Email inválido";
+                case 'auth/user-disabled':
+                    return "Usuário desativado";
+                case 'auth/user-not-found':
+                    return "Usuário não encontrado";
+                case 'auth/wrong-password':
+                    return "Senha incorreta";
+                default:
+                    return "Erro ao fazer login";
+            }
+        }
 
         auth.onAuthStateChanged((user) => {
             if (user) {
@@ -196,3 +229,6 @@ const auth = firebase.auth();
                 auth.signOut();
             });
         }
+
+        // Inicialização
+        filterByCategory('all');
