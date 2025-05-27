@@ -1,3 +1,4 @@
+
 // Filtro de categorias
         document.querySelectorAll('.category-filter').forEach(filter => {
             filter.addEventListener('click', function() {
@@ -54,25 +55,7 @@
                 product.style.display = 'block';
             });
         });
-
-// Configuração do Firebase (substitua com suas credenciais)
-const firebaseConfig = {
-    apiKey: "AIzaSyAV89KI7W-3PnT3l73u2XSEYULY6s1D5Iw",
-    authDomain: "loja-virtual-502f1.firebaseapp.com",
-    projectId: "loja-virtual-502f1",
-    storageBucket: "loja-virtual-502f1.firebasestorage.app",
-    messagingSenderId: "462123732485",
-    appId: "1:462123732485:web:e46f3e7aa69dc68c0b966c",
-    measurementId: "G-H2GP6VX4T6"
-  };
-
-
-// Inicializa o Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
-
-             // Elementos da DOM
+        // Elementos da DOM
         const loginButton = document.getElementById('login-button');
         const authSection = document.getElementById('auth-section');
         const loginModal = document.getElementById('login-modal');
