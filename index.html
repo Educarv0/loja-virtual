@@ -144,16 +144,11 @@
         messagingSenderId: "462123732485",
         appId: "1:462123732485:web:e46f3e7aa69dc68c0b966c",
         measurementId: "G-H2GP6VX4T6"
-        };
-         firebase.initializeApp(firebaseConfig);
+    };
 
-        firebase.auth()
-        .signInWithEmailAndPassword("test@gmail.com", "test@123")
-        .then(response => {
-            console.log('success', response)
-        }).catch(error => {
-            console.log('error', error)
-        });
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 
     </script>
     <script src="script.js"></script>
