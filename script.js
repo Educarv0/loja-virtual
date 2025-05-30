@@ -13,6 +13,7 @@
         const categoryFilters = document.querySelectorAll('.category-filter');
         const productCards = document.querySelectorAll('.product-card');
         const categoryTitles = document.querySelectorAll('.category-title');
+        const dropdown = document.querySelector('.dropdown');
 
         // Função para filtrar produtos por categoria
         function filterByCategory(category) {
@@ -93,8 +94,9 @@
             }
         });
 
-        // Firebase Auth
-        submitLogin.addEventListener('click', () => {
+        // Firebase Auth - Corrigido para funcionar o botão Entrar
+        submitLogin.addEventListener('click', (e) => {
+            e.preventDefault();
             const email = loginEmail.value.trim();
             const password = loginPassword.value.trim();
             
@@ -137,6 +139,7 @@
                 updateUI(user);
             } else {
                 authSection.innerHTML = '<button class="auth-button" id="login-button">Login</button>';
+                // Reatribui o event listener ao novo botão de login
                 document.getElementById('login-button').addEventListener('click', () => {
                     loginModal.style.display = 'flex';
                 });
@@ -147,12 +150,24 @@
             authSection.innerHTML = `
                 <div class="user-info">
                     <span class="user-email">${user.email}</span>
-                    <button class="logout-button" id="logout-button">Sair</button>
+                    <div class="user-dropdown">
+                        <a href="#" id="profile-link">Meu Perfil</a>
+                        <a href="#" id="orders-link">Meus Pedidos</a>
+                        <a href="#" id="logout-button">Sair</a>
+                    </div>
                 </div>
             `;
             
-            document.getElementById('logout-button').addEventListener('click', () => {
+            document.getElementById('logout-button').addEventListener('click', (e) => {
+                e.preventDefault();
                 auth.signOut();
+            });
+        }
+
+        // Menu dropdown para mobile
+        if (window.innerWidth <= 768) {
+            dropdown.addEventListener('click', function() {
+                this.classList.toggle('active');
             });
         }
 
